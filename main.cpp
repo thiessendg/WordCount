@@ -29,6 +29,16 @@ int main() {
                 string word;
                 fileStream >> word;
 
+                //strip out punctuation
+				for (unsigned long long i = 0, len = word.size(); i < len; i++)
+				{
+					if (ispunct(word[i]))
+					{
+						word.erase(i--, 1);
+						len = word.size();
+					}//end if
+				}//end for
+
                 //Look if it's already there.
                 if (wordsCount.find(word) == wordsCount.end()) { // Then we've encountered the word for a first time.
 
